@@ -50,7 +50,7 @@ class solver():
 
             self.rec[point] = []
             #         初始化是01 02 03 0 4，使用set可以去重
-            self.edge[point] = {}
+            self.edge[point] = set()
 
     def cut(self):
         '''
@@ -87,12 +87,15 @@ class solver():
             x = self.rec[point]
             # 恶臭代码。当前值往四处走，看是不是在其他领域
             for index in x:
-                index_1 = (index[0] + 1, index[1])
-                index_2 = (index[0] - 1, index[1])
-                index_3 = (index[0], index[1] + 1)
-                index_4 = (index[0], index[1] - 1)
-
+                index_1 = [index[0] + 1, index[1]]
+                index_2 = [index[0] - 1, index[1]]
+                index_3 = [index[0], index[1] + 1]
+                index_4 = [index[0], index[1] - 1]
+                # print(index_4)
+                # break
                 for j in range(self.m):
+                    if i==j:
+                        continue
                     if index_1 in self.rec[self.lists[j]] and i != j:
                         self.edge[point].add(self.lists[j])
                     elif index_2 in self.rec[self.lists[j]] and i != j:
