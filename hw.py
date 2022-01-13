@@ -188,11 +188,11 @@ class solver():
         self.init_m()
         self.cut()
         self.find_edge()
-        print(self.edge)
-        # self.least_square()
-        # print(self.superface[(0,0)])
-        # self.loss()
-        # print(self.lo)
+        # print(self.edge)
+        self.least_square()
+        print(self.superface[(0,0)])
+        self.loss()
+        print(self.lo)
 
 
 if __name__ == '__main__':
